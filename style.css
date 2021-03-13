@@ -3,4 +3,22 @@
 .wrapper {
     width: 400px;
     margin: 30px auto;
+    
+}
+h1 {
+    
+}
+.btn {
+
+}
+.btn:hover {
+
+}
+ul {
+    list-style-type: none;
+    list-style-position: inside;
+    background-color: pink;
+}
+li {
+    color: red;
 }
