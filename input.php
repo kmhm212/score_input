@@ -50,13 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="wrapper">
         <h1 class="title">五教科テスト点数入力</h1>
-        <ul>
-            <?php foreach($err_messages as $err_message): ?>
-                <li>
-                    <?= $err_message ?>
-                </li>
-            <?php endforeach ?>
-        </ul>
+        <?php if($err_messages): ?>
+            <ul>
+                <?php foreach($err_messages as $err_message): ?>
+                    <li>
+                        <?= $err_message ?>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        <?php endif ?>
         <form action="" method="post">
             <div class="form-group">
                 <label for="name">氏名 <span class="required">(必須)<span></label>
