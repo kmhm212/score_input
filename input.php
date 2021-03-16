@@ -12,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $err_messages[] = $topics['subject'][$i] . 'を入力して下さい';
         }
     }
+    if (empty ($err_messages)) {
+        header("Location: result.php");
+    }
 }
 ?>
 
