@@ -1,33 +1,18 @@
 <?php
-    $subjects = [
-        'name' => '名前',
-        'ja'   => '国語の点数',
-        'ma'   => '数学の点数',
-        'sc'   => '理科の点数',
-        'so'   => '社会の点数',
-        'en'   => '英語の点数',
-    ];
-    $points = [
-        'name' => '',
-        'ja'   => '',
-        'ma'   => '',
-        'sc'   => '',
-        'so'   => '',
-        'en'   => '',
-    ];
-    $err_messages = [];
+$err_messages = [];
+$tpcs = [
+    'name' => '名前',
+    'japanese' => '国語の点数',
+    'mathematics' => '数学の点数',
+    'science' => '理科の点数',
+    'social_studies' => '社会の点数',
+    'english' => '英語の点数',
+];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $points = [
-        'name' => $_POST['name'],
-        'ja'   => $_POST['japanese'],
-        'ma'   => $_POST['mathematics'],
-        'sc'   => $_POST['science'],
-        'so'   => $_POST['social_studies'],
-        'en'   => $_POST['english'],
-    ];
-    foreach ($subjects as $su => $subject) {
-        if (empty ($points[$su]) && $points[$su] != "0") {
-            $err_messages[] = $subject . 'を入力して下さい' . '<br>';
+    foreach ($tpcs as $tpc => $sb) {
+        $topics[$tpc] = $_POST[$tpc];
+        if (empty($topics[$tpc]) && $topics[$tpc] == "") {
+            $err_messages[] = $sb . 'を入力して下さい';
         }
     }
     if (empty ($err_messages)) {
@@ -35,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -54,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <ul>
                 <?php foreach($err_messages as $err_message): ?>
                     <li>
-                        <?= $err_message ?>
+                        <?= htmlspecialchars ($err_message, ENT_QUOTES, 'UTF-8') ?>
                     </li>
                 <?php endforeach ?>
             </ul>
@@ -62,27 +48,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="post">
             <div class="form-group">
                 <label for="name">氏名 <span class="required">(必須)<span></label>
-                <input type="text" name="name" id="name" value="<?= $points['name'] ?>" >
+                <input type="text" name="name" id="name" value="<?= $topics['name'] ?>" >
             </div>
             <div class="form-group">
                 <label for="japanese">国語 <span class="required">(必須)<span></label>
-                <input type="number" name="japanese" id="japanese" min="0" max="100" value="<?= $points['ja'] ?>">点
+                <input type="number" name="japanese" id="japanese" min="0" max="100" value="<?= $topics['japanese'] ?>">点
             </div>
             <div class="form-group">
                 <label for="mathematics">数学 <span class="required">(必須)<span></label>
-                <input type="number" name="mathematics" id="mathematics" min="0" max="100" value="<?= $points['ma'] ?>">点
+                <input type="number" name="mathematics" id="mathematics" min="0" max="100" value="<?= $topics['mathematics'] ?>">点
             </div>
             <div class="form-group">
                 <label for="science">理科 <span class="required">(必須)<span></label>
-                <input type="number" name="science" id="science" min="0" max="100" value="<?= $points['sc'] ?>">点
+                <input type="number" name="science" id="science" min="0" max="100" value="<?= $topics['science'] ?>">点
             </div>
             <div class="form-group">
                 <label for="social_studies">社会 <span class="required">(必須)<span></label>
-                <input type="number" name="social_studies" id="social_studies" min="0" max="100" value="<?= $points['so'] ?>">点
+                <input type="number" name="social_studies" id="social_studies" min="0" max="100" value="<?= $topics['social_studies'] ?>">点
             </div>
             <div class="form-group">
                 <label for="english">英語 <span class="required">(必須)<span></label>
-                <input type="number" name="english" id="english" min="0" max="100" value="<?= $points['en'] ?>">点
+                <input type="number" name="english" id="english" min="0" max="100" value="<?= $topics['english'] ?>">点
             </div>
             <input type="submit" value="送信" class="btn">
         </form>
