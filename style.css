@@ -4,3 +4,53 @@
     width: 400px;
     margin: 30px auto;
 }
+a {
+    text-decoration: none;
+}
+h1 {
+    text-align: center;
+}
+.btn {
+    display: block;
+    width: 100%;
+    background-color: #06d;
+    color: white;
+    border: none;
+    margin: 30px auto;
+    padding: 10px;
+    letter-spacing: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+.btn:hover {
+    background-color: palevioletred;
+}
+.btn:checked {
+    border: solid #06d 2px;
+}
+ul {
+    list-style-type: none;
+    list-style-position: inside;
+    background-color: pink;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+li {
+    color: red;
+}
+.form-group {
+    margin: 10px auto;
+}
+.required {
+    color: red;
+    font-size: 0.8rem;
+}
+input {
+    width: 380px;
+    border:solid #999 1px;
+    border-radius: 5px;
+}
+input[type="number"] {
+    text-align: right;
+}

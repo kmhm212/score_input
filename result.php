@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
         <h1 class="result_title">入力が完了しました</h1>
-        <a href="">戻る</a>
+        <a href="input.php" class="btn">戻る</a>
     </div>
 </body>
 
