@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (empty ($err_messages)) {
         header("Location: result.php");
+        exit;
     }
 }
 ?>
